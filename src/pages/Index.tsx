@@ -3,7 +3,6 @@ import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import Simulator from "@/components/Simulator";
 import BenefitsSection from "@/components/BenefitsSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -23,7 +22,6 @@ const Index = () => {
         <HeroSection onSimulateClick={scrollToSimulator} />
         <Simulator />
         <BenefitsSection />
-        <TestimonialsSection />
       </main>
       <Footer />
     </div>
