@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(git add *)",
-      "Bash(git -c user.email=\"hurtzgestao@gmail.com\" -c user.name=\"marcosviniiciusfs-png\" commit -m \"Configure GitHub Pages: CNAME + Supabase env vars in build\")",
-      "Bash(git push *)"
-    ]
-  }
-}
