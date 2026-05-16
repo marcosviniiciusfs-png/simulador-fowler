@@ -1,29 +1,8 @@
-import { useState, useEffect } from "react";
-import { CheckCircle, ExternalLink } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link, useSearchParams } from "react-router-dom";
-
-interface KommoProof {
-  leadId: number;
-  traceId: string;
-  leadUrl: string;
-  verified: boolean;
-}
+import { Link } from "react-router-dom";
 
 const ThankYou = () => {
-  const [proof, setProof] = useState<KommoProof | null>(null);
-  const [searchParams] = useSearchParams();
-  const isDebug = searchParams.get("debug") === "1";
-
-  useEffect(() => {
-    try {
-      const stored = sessionStorage.getItem("kommo_proof");
-      if (stored) {
-        setProof(JSON.parse(stored));
-      }
-    } catch { /* ignore */ }
-  }, []);
-
   return (
     <div className="min-h-screen flex items-center justify-center bg-background px-4">
       <div className="max-w-md w-full text-center space-y-6">
@@ -32,7 +11,7 @@ const ThankYou = () => {
             <CheckCircle className="w-16 h-16 text-primary" />
           </div>
         </div>
-        
+
         <div className="space-y-3">
           <h1 className="text-3xl md:text-4xl font-bold text-foreground">
             Obrigado!
@@ -41,23 +20,6 @@ const ThankYou = () => {
             Sua solicitação foi enviada com sucesso! Em breve entraremos em contato via WhatsApp.
           </p>
         </div>
-
-        {isDebug && proof && (
-          <div className="bg-muted rounded-lg p-4 text-left space-y-2 text-sm">
-            <p className="font-semibold text-foreground">Comprovante (debug)</p>
-            <p className="text-muted-foreground">Protocolo: <span className="font-mono text-foreground">{proof.traceId}</span></p>
-            <p className="text-muted-foreground">Lead ID: <span className="font-mono text-foreground">{proof.leadId}</span></p>
-            <p className="text-muted-foreground">Verificado: {proof.verified ? "✅ Sim" : "⚠️ Não confirmado"}</p>
-            <a
-              href={proof.leadUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-primary hover:underline mt-1"
-            >
-              Abrir no CRM <ExternalLink className="w-3 h-3" />
-            </a>
-          </div>
-        )}
 
         <div className="pt-4">
           <Link to="/">
