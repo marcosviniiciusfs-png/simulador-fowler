@@ -22,6 +22,8 @@ dist-ssr
 !.vscode/extensions.json
 .idea
 .claude/
+.playwright-mcp/
+site-no-ar.png
 .DS_Store
 *.suo
 *.ntvs*
