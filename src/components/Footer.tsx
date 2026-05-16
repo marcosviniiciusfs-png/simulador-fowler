@@ -14,7 +14,7 @@ const Footer = () => {
             </div>
             <div className="flex items-center gap-4 mt-2">
               <a
-                href="https://www.facebook.com/profile.php?id=61579785880482#"
+                href="https://www.facebook.com/profile.php?id=61572364243565#"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-white/80 transition-colors"
@@ -23,7 +23,7 @@ const Footer = () => {
                 <img src={facebookIcon} alt="Facebook" className="w-8 h-8" />
               </a>
               <a
-                href="https://www.instagram.com/vivacapitalconsorcios?igsh=NWx0NHR3dHZsZG12"
+                href="https://www.instagram.com/grupofowlerprado"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-white/80 transition-colors"
@@ -42,7 +42,8 @@ const Footer = () => {
                 <Phone className="w-5 h-5 mt-1 flex-shrink-0" />
                 <div>
                   <p className="font-semibold">WhatsApp</p>
-                  <p className="text-white/90">(85) 98972-6961</p>
+                  <p className="text-white/90">(67) 9193-9230</p>
+                  <p className="text-white/90">(67) 9208-0091</p>
                 </div>
               </div>
             </div>
@@ -56,8 +57,8 @@ const Footer = () => {
                 <MapPin className="w-5 h-5 mt-1 flex-shrink-0" />
                 <div>
                   <p className="text-white/90">
-                    Rua Sátiro Dias, 387 – Montese<br />
-                    Fortaleza-CE
+                    Rua Bruno Garcia, 162 – Centro<br />
+                    Três Lagoas-MS
                   </p>
                 </div>
               </div>
@@ -78,7 +79,7 @@ const Footer = () => {
         <div className="border-t border-white/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white/90 text-sm">
-              © 2025 Fowler Prado. Todos os direitos reservados.
+              © 2026 Fowler Prado. Todos os direitos reservados.
             </p>
             <div className="flex gap-6 text-sm">
               <button className="text-white/90 hover:text-white transition-colors">
