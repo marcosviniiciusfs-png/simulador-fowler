@@ -1,0 +1,111 @@
+- generic [ref=e2]:
+  - region "Notifications (F8)":
+    - list
+  - region "Notifications alt+T"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - img "Viva Capital" [ref=e7]
+        - navigation [ref=e8]:
+          - button "Início" [ref=e9] [cursor=pointer]
+          - button "Simulador" [ref=e10] [cursor=pointer]
+          - button "Benefícios" [ref=e11] [cursor=pointer]
+          - button "Contato" [ref=e12] [cursor=pointer]
+    - main [ref=e13]:
+      - generic [ref=e16]:
+        - generic [ref=e17]:
+          - heading "Simule agora o seu crédito ideal para conquistar o seu sonho" [level=1] [ref=e18]
+          - paragraph [ref=e19]: + de 1000 simulações realizadas
+          - generic [ref=e20]:
+            - generic [ref=e21]:
+              - img [ref=e23]
+              - generic [ref=e25]: 100% Gratuito
+            - generic [ref=e26]:
+              - img [ref=e28]
+              - generic [ref=e30]: Sem consulta ao SPC
+            - generic [ref=e31]:
+              - img [ref=e33]
+              - generic [ref=e35]: Resultado no WhatsApp
+            - generic [ref=e36]:
+              - img [ref=e38]
+              - generic [ref=e40]: Lojas em parceria
+          - button "Simular crédito agora" [ref=e41] [cursor=pointer]
+        - img "Imóveis e Veículos" [ref=e43]
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - heading "Simulador de Crédito" [level=2] [ref=e48]
+          - paragraph [ref=e49]: Preencha os dados abaixo para receber sua simulação
+        - generic [ref=e50]:
+          - generic [ref=e51]:
+            - generic [ref=e52]:
+              - generic [ref=e53]: Progresso
+              - generic [ref=e54]: 1 de 8
+            - progressbar [ref=e55]
+          - generic [ref=e58]:
+            - generic [ref=e59]: Qual tipo de bem você deseja adquirir?
+            - combobox "Qual tipo de bem você deseja adquirir?" [ref=e60] [cursor=pointer]:
+              - generic: Selecione uma opção
+              - img [ref=e61]
+          - generic [ref=e63]:
+            - button "Voltar" [disabled]:
+              - img
+              - text: Voltar
+            - button "Próximo" [disabled]:
+              - text: Próximo
+              - img
+      - generic [ref=e65]:
+        - generic [ref=e66]:
+          - heading "Por que escolher a Viva Capital?" [level=2] [ref=e67]
+          - paragraph [ref=e68]: Oferecemos as melhores condições do mercado com total transparência e agilidade.
+        - generic [ref=e69]:
+          - generic [ref=e70]:
+            - img [ref=e72]
+            - heading "Receba direto no WhatsApp" [level=3] [ref=e74]
+            - paragraph [ref=e75]: Sua simulação de crédito é enviada rapidamente para o seu WhatsApp com todas as informações necessárias.
+          - generic [ref=e76]:
+            - img [ref=e78]
+            - heading "Parcelas que cabem no seu bolso" [level=3] [ref=e80]
+            - paragraph [ref=e81]: Encontramos as melhores condições de financiamento com parcelas que se adequam ao seu orçamento.
+          - generic [ref=e82]:
+            - img [ref=e84]
+            - heading "Simulação sem compromisso" [level=3] [ref=e87]
+            - paragraph [ref=e88]: Faça quantas simulações quiser, totalmente grátis e sem consulta ao SPC ou Serasa.
+    - contentinfo [ref=e89]:
+      - generic [ref=e90]:
+        - generic [ref=e91]:
+          - generic [ref=e92]:
+            - img "Viva Capital" [ref=e94]
+            - generic [ref=e95]:
+              - link "Facebook da Viva Capital" [ref=e96] [cursor=pointer]:
+                - /url: https://www.facebook.com/profile.php?id=61579785880482#
+                - img "Facebook" [ref=e97]
+              - link "Instagram da Viva Capital" [ref=e98] [cursor=pointer]:
+                - /url: https://www.instagram.com/vivacapitalconsorcios?igsh=NWx0NHR3dHZsZG12
+                - img [ref=e99]
+          - generic [ref=e102]:
+            - heading "Fale Conosco" [level=3] [ref=e103]
+            - generic [ref=e105]:
+              - img [ref=e106]
+              - generic [ref=e108]:
+                - paragraph [ref=e109]: WhatsApp
+                - paragraph [ref=e110]: (85) 98972-6961
+          - generic [ref=e111]:
+            - heading "Localização" [level=3] [ref=e112]
+            - generic [ref=e113]:
+              - generic [ref=e114]:
+                - img [ref=e115]
+                - paragraph [ref=e119]:
+                  - text: Rua Sátiro Dias, 387 – Montese
+                  - text: Fortaleza-CE
+              - generic [ref=e120]:
+                - img [ref=e121]
+                - generic [ref=e124]:
+                  - paragraph [ref=e125]: Horário de Atendimento
+                  - paragraph [ref=e126]:
+                    - text: "Segunda à Sexta: 8h às 18h"
+                    - text: "Sábado: 8h às 12h"
+        - generic [ref=e128]:
+          - paragraph [ref=e129]: © 2025 Viva Capital. Todos os direitos reservados.
+          - generic [ref=e130]:
+            - button "Política de Privacidade" [ref=e131] [cursor=pointer]
+            - button "Termos de Uso" [ref=e132] [cursor=pointer]

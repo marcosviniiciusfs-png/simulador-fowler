@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Logo e Descrição */}
           <div>
             <div className="flex flex-col items-center md:items-start gap-2 mb-4">
-              <img src={vivaCapitalLogo} alt="Viva Capital" className="h-20 w-auto" />
+              <img src={vivaCapitalLogo} alt="Fowler Prado" className="h-20 w-auto" />
             </div>
             <div className="flex items-center gap-4 mt-2">
               <a
@@ -18,7 +18,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-white/80 transition-colors"
-                aria-label="Facebook da Viva Capital">
+                aria-label="Facebook da Fowler Prado">
                 
                 <img src={facebookIcon} alt="Facebook" className="w-8 h-8" />
               </a>
@@ -27,7 +27,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-white/80 transition-colors"
-                aria-label="Instagram da Viva Capital">
+                aria-label="Instagram da Fowler Prado">
                 
                 <Instagram className="w-8 h-8" />
               </a>
@@ -78,7 +78,7 @@ const Footer = () => {
         <div className="border-t border-white/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white/90 text-sm">
-              © 2025 Viva Capital. Todos os direitos reservados.
+              © 2025 Fowler Prado. Todos os direitos reservados.
             </p>
             <div className="flex gap-6 text-sm">
               <button className="text-white/90 hover:text-white transition-colors">
