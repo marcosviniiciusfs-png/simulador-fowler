@@ -115,17 +115,29 @@ const Simulator = () => {
       "Cidade": formData.city.trim()
     };
 
+    // Shared event_id between client Pixel and server CAPI (when Worker lands)
+    const eventId =
+      typeof crypto !== "undefined" && crypto.randomUUID
+        ? crypto.randomUUID()
+        : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+
     try {
       if (webhookUrl) {
         const response = await fetch(webhookUrl, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(webhookData),
+          body: JSON.stringify({ ...webhookData, event_id: eventId }),
         });
 
         if (!response.ok) {
           throw new Error("Erro ao enviar dados para o webhook");
         }
+      }
+
+      // Fire Meta Pixel "Lead" event (client-side, dedup via eventID)
+      const fbq = (window as unknown as { fbq?: (...args: unknown[]) => void }).fbq;
+      if (typeof fbq === "function") {
+        fbq("track", "Lead", {}, { eventID: eventId });
       }
 
       setFormData({
