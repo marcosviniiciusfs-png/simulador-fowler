@@ -1,5 +1,6 @@
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import heroBanner from "@/assets/hero-banner.png";
 
 interface HeroSectionProps {
   onSimulateClick: () => void;
@@ -36,15 +37,22 @@ const HeroSection = ({ onSimulateClick }: HeroSectionProps) => {
                 </div>
               ))}
             </div>
-          </div>
 
-          <div className="relative animate-scale-in flex items-center justify-center">
             <Button
               onClick={onSimulateClick}
-              className="w-full max-w-md bg-primary hover:bg-primary-hover text-primary-foreground font-bold text-2xl md:text-3xl px-10 py-12 md:py-16 rounded-2xl shadow-2xl hover:shadow-xl hover:scale-105 transition-all h-auto whitespace-normal leading-tight"
+              size="lg"
+              className="bg-primary hover:bg-primary-hover text-primary-foreground font-semibold text-lg px-8 py-6 rounded-lg shadow-lg hover:shadow-xl transition-all"
             >
               Simular crédito agora
             </Button>
+          </div>
+
+          <div className="relative animate-scale-in">
+            <img
+              src={heroBanner}
+              alt="Imóveis e Veículos"
+              className="w-full h-auto rounded-2xl shadow-2xl"
+            />
           </div>
         </div>
       </div>
