@@ -98,11 +98,12 @@ const Simulator = () => {
     if (isSubmitting) return;
     setIsSubmitting(true);
 
-    const webhookUrl = "https://hook.us1.make.com/m60b3l3wcknirc4fc7ezy3553yso5jih";
-    
+    // TODO: set webhook URL when integration target is defined
+    const webhookUrl = "";
+
     const today = new Date().toISOString().split('T')[0];
     const downPaymentValue = formData.hasDownPayment === "Sim" ? formData.downPaymentAmount : "Não tem";
-    
+
     const webhookData = {
       "Data de Entrada": today,
       "Nome Completo": formData.fullName.trim(),
@@ -115,16 +116,16 @@ const Simulator = () => {
     };
 
     try {
-      console.log("Enviando dados para webhook:", webhookData);
+      if (webhookUrl) {
+        const response = await fetch(webhookUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(webhookData),
+        });
 
-      const response = await fetch(webhookUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(webhookData),
-      });
-
-      if (!response.ok) {
-        throw new Error("Erro ao enviar dados para o webhook");
+        if (!response.ok) {
+          throw new Error("Erro ao enviar dados para o webhook");
+        }
       }
 
       setFormData({
