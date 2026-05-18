@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useSimulatorModal } from "@/contexts/SimulatorModalContext";
 import fowlerPradoLogo from "@/assets/fowler-prado-logo.png";
 
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { open: openSimulator } = useSimulatorModal();
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -13,6 +15,11 @@ const Header = () => {
       element.scrollIntoView({ behavior: "smooth" });
       setIsMenuOpen(false);
     }
+  };
+
+  const triggerSimulator = () => {
+    openSimulator();
+    setIsMenuOpen(false);
   };
 
   return (
@@ -31,7 +38,7 @@ const Header = () => {
             Início
           </button>
           <button
-            onClick={() => scrollToSection("simulador")}
+            onClick={triggerSimulator}
             className="text-white hover:text-white/80 transition-colors"
           >
             Simulador
@@ -72,7 +79,7 @@ const Header = () => {
               Início
             </button>
             <button
-              onClick={() => scrollToSection("simulador")}
+              onClick={triggerSimulator}
               className="text-white hover:text-white/80 transition-colors text-left py-2"
             >
               Simulador

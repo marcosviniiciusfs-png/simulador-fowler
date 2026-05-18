@@ -121,13 +121,9 @@ async function sendToSupabase(env, payload) {
   const body = {
     nome: payload.fullName,
     telefone: payload.whatsapp,
-    cidade: payload.city,
     tipo: payload.propertyType,
     valor_pretendido: payload.creditAmount,
-    valor_entrada:
-      payload.hasDownPayment === "Sim" ? payload.downPaymentAmount : "Não tem",
-    parcela_ideal: payload.monthlyPayment,
-    tempo_aquisicao: payload.acquisitionTime,
+    valor_entrada: payload.downPaymentAmount,
     data_entrada: payload.data_entrada,
     event_id: payload.event_id,
   };

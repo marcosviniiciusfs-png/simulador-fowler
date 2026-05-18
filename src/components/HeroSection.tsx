@@ -22,7 +22,7 @@ const HeroSection = ({ onSimulateClick }: HeroSectionProps) => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight">
               Simule agora o seu crédito ideal para conquistar o seu sonho
             </h1>
-            
+
             <p className="text-lg text-muted-foreground font-medium">
               + de 1000 simulações realizadas
             </p>
@@ -38,7 +38,7 @@ const HeroSection = ({ onSimulateClick }: HeroSectionProps) => {
               ))}
             </div>
 
-            <Button 
+            <Button
               onClick={onSimulateClick}
               size="lg"
               className="bg-primary hover:bg-primary-hover text-primary-foreground font-semibold text-lg px-8 py-6 rounded-lg shadow-lg hover:shadow-xl transition-all"
@@ -48,9 +48,9 @@ const HeroSection = ({ onSimulateClick }: HeroSectionProps) => {
           </div>
 
           <div className="relative animate-scale-in">
-            <img 
-              src={heroBanner} 
-              alt="Imóveis e Veículos" 
+            <img
+              src={heroBanner}
+              alt="Imóveis e Veículos"
               className="w-full h-auto rounded-2xl shadow-2xl"
             />
           </div>
