@@ -23,6 +23,7 @@ dist-ssr
 .idea
 .claude/
 .playwright-mcp/
+.wrangler/
 /*.png
 .DS_Store
 *.suo

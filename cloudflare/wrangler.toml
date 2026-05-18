@@ -1,0 +1,13 @@
+name = "fowler-lead"
+main = "worker.js"
+compatibility_date = "2025-05-01"
+
+# Plain-text vars (non-secret)
+[vars]
+ALLOWED_ORIGIN = "https://fowlerprado.simulead.com.br"
+
+# Secrets are configured via:
+#   npx wrangler secret put META_PIXEL_ID
+#   npx wrangler secret put META_ACCESS_TOKEN
+#   npx wrangler secret put SUPABASE_WEBHOOK_URL
+#   npx wrangler secret put SUPABASE_WEBHOOK_TOKEN

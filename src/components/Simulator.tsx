@@ -98,71 +98,62 @@ const Simulator = () => {
     if (isSubmitting) return;
     setIsSubmitting(true);
 
-    // TODO: set webhook URL when integration target is defined
-    const webhookUrl = "";
+    const WORKER_URL = "https://fowler-lead.marcosviniicius-fs.workers.dev/";
 
     const today = new Date().toISOString().split('T')[0];
-    const downPaymentValue = formData.hasDownPayment === "Sim" ? formData.downPaymentAmount : "Não tem";
 
-    const webhookData = {
-      "Data de Entrada": today,
-      "Nome Completo": formData.fullName.trim(),
-      "WhatsApp": formData.whatsapp,
-      "Tipo de Bem": formData.propertyType,
-      "Valor Pretendido (R$)": formData.creditAmount,
-      "Valor de Entrada (R$)": downPaymentValue,
-      "Parcela Ideal (R$)": formData.monthlyPayment,
-      "Cidade": formData.city.trim()
-    };
-
-    // Shared event_id between client Pixel and server CAPI (when Worker lands)
+    // Shared event_id between client Pixel and server CAPI (Worker dedups)
     const eventId =
       typeof crypto !== "undefined" && crypto.randomUUID
         ? crypto.randomUUID()
         : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
 
-    try {
-      if (webhookUrl) {
-        const response = await fetch(webhookUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...webhookData, event_id: eventId }),
-        });
+    // Read Meta fbp/fbc cookies (set by Pixel base) to send to CAPI for match
+    const getCookie = (name: string): string | undefined => {
+      const m = document.cookie.match(new RegExp("(?:^|; )" + name + "=([^;]*)"));
+      return m ? decodeURIComponent(m[1]) : undefined;
+    };
 
-        if (!response.ok) {
-          throw new Error("Erro ao enviar dados para o webhook");
-        }
-      }
+    const payload = {
+      ...formData,
+      data_entrada: today,
+      event_id: eventId,
+      fbp: getCookie("_fbp"),
+      fbc: getCookie("_fbc"),
+      source_url: window.location.href,
+    };
 
-      // Fire Meta Pixel "Lead" event (client-side, dedup via eventID)
-      const fbq = (window as unknown as { fbq?: (...args: unknown[]) => void }).fbq;
-      if (typeof fbq === "function") {
-        fbq("track", "Lead", {}, { eventID: eventId });
-      }
-
-      setFormData({
-        propertyType: "",
-        acquisitionTime: "",
-        creditAmount: "",
-        hasDownPayment: "",
-        downPaymentAmount: "",
-        monthlyPayment: "",
-        city: "",
-        fullName: "",
-        whatsapp: ""
-      });
-      setCurrentStep(0);
-      navigate("/obrigado");
-    } catch (error) {
-      console.error("Erro ao enviar:", error);
-      setIsSubmitting(false);
-      toast({
-        title: "Erro ao enviar simulação",
-        description: "Por favor, tente novamente.",
-        variant: "destructive",
-      });
-      return;
+    // Fire Meta Pixel "Lead" event (client-side, dedup via eventID)
+    const fbq = (window as unknown as { fbq?: (...args: unknown[]) => void }).fbq;
+    if (typeof fbq === "function") {
+      fbq("track", "Lead", {}, { eventID: eventId });
     }
+
+    // Fire-and-forget: send to Worker (CAPI + Supabase fan-out) without blocking UX
+    try {
+      fetch(WORKER_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+        keepalive: true,
+      }).catch((err) => console.error("Worker dispatch failed:", err));
+    } catch (err) {
+      console.error("Worker dispatch threw:", err);
+    }
+
+    setFormData({
+      propertyType: "",
+      acquisitionTime: "",
+      creditAmount: "",
+      hasDownPayment: "",
+      downPaymentAmount: "",
+      monthlyPayment: "",
+      city: "",
+      fullName: "",
+      whatsapp: ""
+    });
+    setCurrentStep(0);
+    navigate("/obrigado");
   };
 
   const renderStep = () => {
