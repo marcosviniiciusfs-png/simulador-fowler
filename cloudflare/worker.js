@@ -54,6 +54,25 @@ export default {
     const clientIp = request.headers.get("CF-Connecting-IP") || "";
     const userAgent = request.headers.get("User-Agent") || "";
 
+    const url = new URL(request.url);
+    const debug = url.searchParams.get("debug") === "1";
+
+    if (debug) {
+      const [supabaseResult, capiResult] = await Promise.allSettled([
+        sendToSupabase(env, payload),
+        sendToMetaCAPI(env, payload, clientIp, userAgent),
+      ]);
+      return jsonResponse(
+        {
+          event_id: payload.event_id,
+          supabase: serializeResult(supabaseResult),
+          meta_capi: serializeResult(capiResult),
+        },
+        200,
+        origin,
+      );
+    }
+
     ctx.waitUntil(
       Promise.allSettled([
         sendToSupabase(env, payload),
@@ -73,6 +92,11 @@ export default {
     return jsonResponse({ accepted: true, event_id: payload.event_id }, 202, origin);
   },
 };
+
+function serializeResult(r) {
+  if (r.status === "fulfilled") return { ok: true };
+  return { ok: false, error: String(r.reason).slice(0, 500) };
+}
 
 function corsHeaders(origin) {
   return {
