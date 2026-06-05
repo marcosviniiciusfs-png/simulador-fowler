@@ -17,14 +17,18 @@
  *   SUPABASE_WEBHOOK_TOKEN   value sent in Authorization: Bearer ...
  *
  * Plain variables:
- *   ALLOWED_ORIGIN           default: https://grupoefata.simulead.com.br
+ *   ALLOWED_ORIGINS          default: https://grupoefata.simulead.com.br,http://grupoefata.simulead.com.br
  */
 
 const DEFAULT_ALLOWED_ORIGIN = "https://grupoefata.simulead.com.br";
+const DEFAULT_ALLOWED_ORIGINS = [
+  DEFAULT_ALLOWED_ORIGIN,
+  "http://grupoefata.simulead.com.br",
+];
 
 export default {
   async fetch(request, env, ctx) {
-    const origin = env.ALLOWED_ORIGIN || DEFAULT_ALLOWED_ORIGIN;
+    const origin = resolveCorsOrigin(request, env);
 
     if (request.method === "OPTIONS") {
       return new Response(null, { status: 204, headers: corsHeaders(origin) });
@@ -105,6 +109,18 @@ function corsHeaders(origin) {
     "Access-Control-Allow-Headers": "Content-Type",
     "Access-Control-Max-Age": "86400",
   };
+}
+
+function resolveCorsOrigin(request, env) {
+  const configured = String(env.ALLOWED_ORIGINS || env.ALLOWED_ORIGIN || "")
+    .split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean);
+  const allowedOrigins = configured.length ? configured : DEFAULT_ALLOWED_ORIGINS;
+  const requestOrigin = request.headers.get("Origin");
+  return requestOrigin && allowedOrigins.includes(requestOrigin)
+    ? requestOrigin
+    : allowedOrigins[0] || DEFAULT_ALLOWED_ORIGIN;
 }
 
 function jsonResponse(body, status, origin) {
