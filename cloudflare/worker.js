@@ -1,5 +1,5 @@
 /**
- * Fowler Prado lead intake Worker.
+ * Grupo Efata lead intake Worker.
  *
  * Pipeline:
  *   [Site] POST /  --->  [Worker]  --->  Supabase webhook (CRM destination)
@@ -17,10 +17,10 @@
  *   SUPABASE_WEBHOOK_TOKEN   value sent in Authorization: Bearer ...
  *
  * Plain variables:
- *   ALLOWED_ORIGIN           default: https://fowlerprado.simulead.com.br
+ *   ALLOWED_ORIGIN           default: https://grupoefata.simulead.com.br
  */
 
-const DEFAULT_ALLOWED_ORIGIN = "https://fowlerprado.simulead.com.br";
+const DEFAULT_ALLOWED_ORIGIN = "https://grupoefata.simulead.com.br";
 
 export default {
   async fetch(request, env, ctx) {

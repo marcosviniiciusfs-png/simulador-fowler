@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/dialog";
 import { useSimulatorModal } from "@/contexts/SimulatorModalContext";
 
-const WORKER_URL = "https://fowler-lead.marcosviniicius-fs.workers.dev/";
+const WORKER_URL = "https://grupo-efata-lead.marcosviniicius-fs.workers.dev/";
 
 type FormData = {
   fullName: string;

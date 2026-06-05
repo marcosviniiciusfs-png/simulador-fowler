@@ -1,5 +1,5 @@
 import { Phone, MapPin, Clock, Instagram } from "lucide-react";
-import fowlerPradoLogo from "@/assets/fowler-prado-logo.png";
+import grupoEfataLogo from "@/assets/grupo-efata-logo.png";
 import facebookIcon from "@/assets/facebook.png";
 
 const Footer = () => {
@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Logo e Descrição */}
           <div>
             <div className="flex flex-col items-center md:items-start gap-2 mb-4">
-              <img src={fowlerPradoLogo} alt="Fowler Prado" className="h-28 w-auto" />
+              <img src={grupoEfataLogo} alt="Grupo Efata" className="h-28 w-auto" />
             </div>
             <div className="flex items-center gap-4 mt-2">
               <a
@@ -18,16 +18,16 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-white/80 transition-colors"
-                aria-label="Facebook da Fowler Prado">
+                aria-label="Facebook do Grupo Efata">
                 
                 <img src={facebookIcon} alt="Facebook" className="w-8 h-8" />
               </a>
               <a
-                href="https://www.instagram.com/grupofowlerprado"
+                href="https://www.instagram.com/grupoefata"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-white/80 transition-colors"
-                aria-label="Instagram da Fowler Prado">
+                aria-label="Instagram do Grupo Efata">
                 
                 <Instagram className="w-8 h-8" />
               </a>
@@ -79,7 +79,7 @@ const Footer = () => {
         <div className="border-t border-white/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white/90 text-sm">
-              © 2026 Fowler Prado. Todos os direitos reservados.
+              © 2026 Grupo Efata. Todos os direitos reservados.
             </p>
             <div className="flex gap-6 text-sm">
               <button className="text-white/90 hover:text-white transition-colors">
