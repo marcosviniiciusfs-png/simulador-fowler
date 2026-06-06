@@ -42,8 +42,8 @@ const Footer = () => {
                 <Phone className="w-5 h-5 mt-1 flex-shrink-0" />
                 <div>
                   <p className="font-semibold">WhatsApp</p>
-                  <p className="text-white/90">(67) 99193-9230</p>
                   <p className="text-white/90">(67) 99208-0091</p>
+                  <p className="text-white/90">(67) 99263-0091</p>
                 </div>
               </div>
             </div>
